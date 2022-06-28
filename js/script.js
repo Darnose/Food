@@ -61,6 +61,9 @@ window.addEventListener('DOMContentLoaded', () => {
     function getZero(num) {
         if (num >= 0 && num < 10) {
             return `0${num}`;
+        } else if (num < 0) {
+            let num = '00';
+            return num;
         } else {
             return num;
         }
