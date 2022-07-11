@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Timer
 
-    const deadLine = '2022-07-11';
+    const deadLine = '2022-07-13';
 
     function getTimeRemaining(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -194,9 +194,16 @@ window.addEventListener('DOMContentLoaded', () => {
         return await res.json();
     };
 
-    getResource('http://localhost:3000/menu')
+    // getResource('http://localhost:3000/menu')
+        // .then(data => {
+        //     data.forEach(({img, altimg, title, descr, price}) => {
+        //         new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
+        //     });
+        // });
+    
+    axios.get('http://localhost:3000/menu')
         .then(data => {
-            data.forEach(({img, altimg, title, descr, price}) => {
+            data.data.forEach(({img, altimg, title, descr, price}) => {
                 new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
             });
         });
@@ -282,6 +289,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
     fetch('http://localhost:3000/menu')
     .then(data => data.json())
-    .then(res => console.log(res));
 
 });
